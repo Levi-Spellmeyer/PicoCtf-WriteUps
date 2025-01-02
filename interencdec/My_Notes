@@ -1,0 +1,26 @@
+1. used wget https://artifacts.picoctf.net/c_titan/108/enc_flag to download th given file and ls to confirm it downloaded
+
+2. cat the filr and got a long string of random characters
+
+3. file is named enc_flag so i can assume its encoded before even cat it
+
+4. tried ls -a to see if any other files were downloaded
+
+5. plugged string into a decoder at https://www.dcode.fr/caesar-cipher and did not get anything useful
+
+6. used base64 -d to try and see if it base64 and it does not appear so
+
+7. started researching other decryption methods
+
+8. tried gpg --decrypt did not work
+
+9. went back to base 64 decode and got this string 
+- b'YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclgyZzBOMm8yYXpZNWZRPT0nCg=='
+
+10 i decided i would try running base 64 again on the string and it failed so on a wim i removed the b'' and got 
+- wpjvJAM{jhlzhy_k3jy9wa3k_h47j6k69}
+
+note this looks a lot like a flag and as it is all numbers and letters i rand the string through the above mentioned website and got the key as follows
+-	picoCTF{caesar_d3cr9pt3d_a47c6d69}
+
+The biggest rabbit hole i faced was figuring out that the string was encoded multiple times
